@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Papagal Cricket Live</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<h2>🏏 Papagal Village Cricket Live Score</h2>
+<h3 id="teams">Loading...</h3>
+<p id="score"></p>
+<p id="overs"></p>
+<b id="status"></b>
+
+<script>
+fetch("https://papagal-cricket-a838b-default-rtdb.firebaseio.com/match.json")
+.then(res => res.json())
+.then(data => {
+  document.getElementById("teams").innerText =
+    data.teamA + " vs " + data.teamB;
+  document.getElementById("score").innerText =
+    data.scoreA + " | " + data.scoreB;
+  document.getElementById("overs").innerText =
+    "Overs: " + data.overs;
+  document.getElementById("status").innerText =
+    data.status;
+});
+setInterval(() => location.reload(), 3000);
+</script>
+
+</body>
+</html>
