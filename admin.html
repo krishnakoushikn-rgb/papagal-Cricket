@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Admin – Update Score</title>
+  <title>Admin – Update Match</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
-<h3>Admin – Update Live Score</h3>
+<h3>Admin – Update Live Match</h3>
 
-<input id="a" placeholder="Team A score (45/2)">
+<input id="teamA" placeholder="Team A name">
 <br><br>
-<input id="b" placeholder="Team B score (44/3)">
+<input id="teamB" placeholder="Team B name">
 <br><br>
-<input id="o" placeholder="Overs (6.2)">
+<input id="scoreA" placeholder="Team A score (45/2)">
+<br><br>
+<input id="scoreB" placeholder="Team B score (44/3)">
+<br><br>
+<input id="overs" placeholder="Overs (6.2)">
 <br><br>
 
-<button onclick="update()">Update Score</button>
+<button onclick="update()">Update Match</button>
 
 <script>
 function update() {
@@ -23,11 +27,14 @@ function update() {
     method: "PATCH",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({
-      scoreA: a.value,
-      scoreB: b.value,
-      overs: o.value
+      teamA: teamA.value,
+      teamB: teamB.value,
+      scoreA: scoreA.value,
+      scoreB: scoreB.value,
+      overs: overs.value,
+      status: "LIVE"
     })
-  }).then(() => alert("Score Updated"));
+  }).then(() => alert("Match Updated"));
 }
 </script>
 
